@@ -1,0 +1,15 @@
+
+ic_prop <- function(x1, x2, confianza){
+n1 <- length(x1)
+n2 <- length(x2)
+p1gorro <- mean(x1)
+p2gorro <- mean(x2)
+
+d <- p1gorro-p2gorro
+alfa <- 1-confianza
+z <- qnorm(1 - alfa / 2)
+LI <- d - z * sqrt( (p1gorro * (1-p1gorro) / n1) + (p2gorro * (1-p2gorro) / n2))  
+LS <- d + z * sqrt( (p1gorro * (1-p1gorro) / n1) + (p2gorro * (1-p2gorro) / n2))
+salida <- c(LI, LS)
+return(salida)
+}
