@@ -1,0 +1,12 @@
+
+ic_difMedias_sigmasConoc <- function(n1, n2, xbarra1, xbarra2,
+                                     sigma1, sigma2, confiabilidad){
+  
+  D <- xbarra1 - xbarra2 # Estimación puntual (resta de los promedios)
+  ee <- sqrt( ((sigma1^2) / n1) + ((sigma2^2) / n2)) # V(xbarra1-xbarr2): error estándar
+  z <- qnorm(1 -(1-confiabilidad) / 2)  
+  LI <- D - z * ee
+  LS <- D + z * ee
+  salida <- c(LI, LS)
+  return(salida)
+}
